@@ -1,6 +1,9 @@
+//import axiosInstance from "../apiClient/index"
+
 const Topic = {
     name : "topic",
     template : `
+
         <div id="Topic" class="container">
 
             <!-- Topico -->
@@ -12,7 +15,7 @@ const Topic = {
                        <img class="h-100 efeito-size" src="../assets/Logo.svg" alt="logo Cartografia da Cultura" @click="pushTopics">
                    </div>
                    <div class="col text-center pl-0">
-                        <h1 class="font-weight-bold float-left pl-0 pink-text" style="font-size:4vw;">VOTE!</h1>
+                        <h1 class="font-weight-bold float-left pl-0 pink-text" style="font-size:4vw;">APOIE!</h1>
                    </div>
                    <div class="col-2 mt-4">
                        <p class="h2 text-center">{{topic.postiveSupports}}</p>
@@ -64,7 +67,6 @@ const Topic = {
                     <p class="card-text">{{reply.createAt}}</p>
                 </div>
             </div>
-
 
             <!-- Para Debug -->
             <hr class="m-6">

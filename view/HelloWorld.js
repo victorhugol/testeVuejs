@@ -1,4 +1,3 @@
-
 // O view renderiza o objeto js entendendo ele como 
 // um componente View
 
@@ -16,6 +15,5 @@ const HelloWorld = {
         }
     }
 }
-
 
 export default HelloWorld;
