@@ -1,0 +1,27 @@
+{
+  "name": "dialogo",
+  "version": "1.0.0",
+  "description": "componente dialogo",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victorhugol/testeVuejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/victorhugol/testeVuejs/issues"
+  },
+  "homepage": "https://github.com/victorhugol/testeVuejs#readme",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "bootstrap": "^4.5.2",
+    "bootstrap-vue": "^2.17.3"
+  }
+}
