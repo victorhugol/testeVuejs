@@ -1,4 +1,4 @@
-//import axiosInstance from "../apiClient/index"
+import axiosInstance from '../apiClient/index.js'
 
 const Topic = {
     name : "topic",
@@ -75,7 +75,7 @@ const Topic = {
             <p>{{replies}}</p>
             <p>{{user.commment}}</p>
 
-            <link rel="stylesheet" href="../style/topic.css">
+            <link rel="stylesheet" href="../style/topic/topic.css">
 
         </div>
     `,
@@ -93,23 +93,34 @@ const Topic = {
         }
     },
     mounted() {
-        const url = `http://127.0.0.1:4000/topic/${this.$route.params.id}` 
-        const urlGetReplies = `http://127.0.0.1:4000/getCurrentTopicReplies/${this.$route.params.id}`
-        const urlGetId = `http://127.0.0.1:4000/users/${this.user.id}`
+        const url = `topic/${this.$route.params.id}` 
+        const urlGetReplies = `getCurrentTopicReplies/${this.$route.params.id}`
+        const urlGetId = `users/${this.user.id}`
 
-        axios.get(url).then(res =>{
-            this.topic = res.data
-            this.user.topicId = res.data.id
-        }).catch( err => {
-            this.topic = err.data
+        // axios.get(url).then(res =>{
+        //     this.topic = res.data
+        //     this.user.topicId = res.data.id
+        // }).catch( err => {
+        //     this.topic = err.data
+        // })
+        axiosInstance(url)
+        .then((respose)=>{
+            this.topic = respose.data;
+            this.user.Topic = res.data.id;
+        })
+        .catch(err =>{
+            this.topic = err.data;
         })
 
-        axios.get(urlGetReplies).then(res =>{
+
+
+        axiosInstance.get(urlGetReplies)
+        .then(res =>{
             let repliesAt = res.data
             repliesAt.forEach(
                 reply => {
-                    const searchName = `http://127.0.0.1:4000/users/${reply.userId}`
-                    axios.get(searchName).then(res =>{
+                    const searchName = `${reply.userId}`
+                    axiosInstance.get(searchName).then(res =>{
                         reply.firstName = res.data[0].firstName
                         reply.lastName = res.data[0].lastName
                         this.replies.push(reply)
@@ -118,12 +129,13 @@ const Topic = {
                     })
                 }
             )
-        }).catch( err => {
+        })
+        .catch( err => {
             console.log(err)
             this.replies = err
         })
 
-        axios.get(urlGetId).then(res => {
+        axiosInstance.get(urlGetId).then(res => {
             this.user.firstName = res.data[0].firstName
             this.user.lastName = res.data[0].lastName
         }).catch( err => {
@@ -132,7 +144,7 @@ const Topic = {
     },
     methods: {
         sendComment: function(){
-            let urlSendComment = `http://127.0.0.1:4000/reply/` 
+            let urlSendComment = `reply/` 
             let bodyToSend = {
                 content: this.user.comment,
                 topicId: this.user.topicId,
@@ -141,10 +153,12 @@ const Topic = {
 
             this.user.comment =  " "
 
-            axios.post(urlSendComment, bodyToSend).then(res => {
-                console.log("Comentário enviado com sucesso")
+            axiosInstance.post(urlSendComment, bodyToSend)
+            .then(res => {
+                console.log("Comentário enviado com sucesso");
                 this.$router.go()
-            }).catch( err => {
+            })
+            .catch( err => {
                 console.log(err)
             })
         },

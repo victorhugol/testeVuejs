@@ -3,8 +3,10 @@ const Logo = {
     template : `
       <div
     class="box"
-    :class="{ 'black-mode' : blackMode, 'bordered' : bordered }" :style="{ 'height': `${size}px`, 'width': `${size}px` }" @click="goToHome()"
-  >
+    :class="{ 'black-mode' : blackMode, 'bordered' : bordered }" 
+    :style="{ 'height': size+px, 'width': size+px }" 
+    @click="goToHome()">
+
     <div class="top">
       <span
         id="title"
@@ -30,11 +32,7 @@ const Logo = {
     </div>
   </div>
     `,
-    props: {
-        blackMode:false,
-    props: () => { size:180,
-
-    },
+    props: ['blackmode'],
     data() {
         return {
             topics:{}

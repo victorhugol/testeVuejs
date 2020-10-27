@@ -37,7 +37,7 @@ const TopicCard = {
                     </div>
                 </div>
             </div>
-            <link rel="stylesheet" href="../style/topicCard.css">
+            <link rel="stylesheet" href="../style/topic/topicCard.css">
         </div>
     `,
     props: ["title", "createAt", "positiveSupports", "negativeSupports", "numerOfReplies", "views", "topicCategory", "id", "content"],

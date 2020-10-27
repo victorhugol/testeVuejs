@@ -1,4 +1,5 @@
-import TopicCard from "./TopicCard.js"
+import axiosInstance from "../apiClient/index.js"
+import TopicCard from "../component/topics/TopicCard.js"
 
 const Topics = {
     name : "topics",
@@ -26,7 +27,7 @@ const Topics = {
                     </div>
                 </div>
                 <div class="col-auto ">
-                    <div class="mb-3" v-for="topic in topics.data.data" :key="topic.id">
+                    <div class="mb-3" v-for="topic in topics.data" :key="topic.id">
                             <TopicCard  v-bind:title="topic.title" :positiveSupports="topic.postiveSupports" 
                               :negativeSupports="topic.negativeSupports" :createAt="formatDate(topic.createAt)"
                               :numerOfReplies="topic.numerOfReplies"
@@ -58,9 +59,9 @@ const Topics = {
         }
     },
     mounted(){
-        const url = "http://localhost:4000/topicsMostRecent/"
+        const url = "topicsMostRecent/"
         console.log(url)
-        axios.get(url).then(res =>{
+        axiosInstance.get(url).then(res =>{
             this.topics = res
             console.log(res)
         }).catch( err =>{

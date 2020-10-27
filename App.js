@@ -4,14 +4,15 @@
 //Esse router-view é compreendido pelo vue router na hora de renderizar
 
 const Template = `
-<div>
-    <router-view/>
-</div>
-` 
-export default {
-name : 'app',
-components : {
-} ,
-template : Template,
+    <div>
+        <router-view/>
+    </div>
+`
 
+
+export default {
+    name : 'app',
+    components : {
+    } ,
+    template : Template,
 }

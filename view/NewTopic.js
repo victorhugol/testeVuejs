@@ -1,8 +1,15 @@
+import PaginaUm from '../component/topics/paginaUm.js';
+import PaginaDois from '../component/topics/paginaDois.js';
+
+
+
+
 const NewTopic = {
     name : "NewTopic",
     template : `
         <div id="NewTopic">
-            <p>Teste Teste Testando</p>
+            <pagina-um/>
+            <pagina-dois/>
         </div>
     `,
     data(){
@@ -15,6 +22,9 @@ const NewTopic = {
                 categoriesTagged: []
             }
         }
+    },
+    components:{
+        PaginaUm, PaginaDois
     }
 }
 

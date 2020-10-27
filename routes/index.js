@@ -7,7 +7,8 @@ import NewTopic from '../view/NewTopic.js';
 Vue.use(VueRouter);
 
 
-const routes = [{
+const routes = [
+    {
         path: '/',
         name: 'dialogos',
         component: Topics
@@ -19,7 +20,7 @@ const routes = [{
     },
     {
         name:"NewTopic",
-        path: "/novodialogo",
+        path: "/newtopic",
         component: NewTopic
     }
 ]
